@@ -41,7 +41,7 @@ def normalize(input_string: str) -> str:
     return normalized_string
 
 
-def no_vowels(input_string):
+def no_vowels(input_string: str) -> str:
     """
     인풋으로 받는 스트링에서 모든 모음 (a, e, i, o, u)를 제거시킨 스트링을 반환함
 
@@ -62,7 +62,7 @@ def no_vowels(input_string):
             >>> tp.normalize(input_string2)
             ''W lv Pythn!'
     """
-    block_chars = ['a', 'e', 'i', 'o', 'u']
+    block_chars = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
     filtered = filter(lambda x: x not in block_chars, input_string)
-    no_vowel_string = str(list(filtered))
+    no_vowel_string = ''.join(list(filtered))
     return no_vowel_string
