@@ -7,8 +7,10 @@ NLP에서 흔히하는 전처리는 소문자 변환, 앞뒤 필요없는 띄어
 이번 숙제에서는 텍스트 처리 방법을 파이썬으로 배워보겠습니다. 
 """
 
+import re
 
-def normalize(input_string):
+
+def normalize(input_string: str) -> str:
     """
      인풋으로 받는 스트링에서 정규화된 스트링을 반환함
      아래의 요건들을 충족시켜야함
@@ -33,11 +35,13 @@ def normalize(input_string):
              >>> tp.normalize(input_string2)
              'extra space'
     """
-    normalized_string = None
+    lowered_string = input_string.lower()
+    trimed_string = lowered_string.strip()
+    normalized_string = re.sub('\s+', ' ', trimed_string)
     return normalized_string
 
 
-def no_vowels(input_string):
+def no_vowels(input_string: str) -> str:
     """
     인풋으로 받는 스트링에서 모든 모음 (a, e, i, o, u)를 제거시킨 스트링을 반환함
 
@@ -58,5 +62,7 @@ def no_vowels(input_string):
             >>> tp.normalize(input_string2)
             ''W lv Pythn!'
     """
-    no_vowel_string = None
+    block_chars = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    filtered = filter(lambda x: x not in block_chars, input_string)
+    no_vowel_string = ''.join(list(filtered))
     return no_vowel_string
